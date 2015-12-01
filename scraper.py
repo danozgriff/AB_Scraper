@@ -1,5 +1,5 @@
 import scraperwiki
-import mechanize
+# import mechanize
 import re
 
 # ASPX pages are some of the hardest challenges because they use javascript and forms to navigate
