@@ -17,4 +17,4 @@ response = br.open(url)
 
 for pagenum in range(10):
     html = response.read()
-    print "html
+    print html
