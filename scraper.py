@@ -17,5 +17,4 @@ response = br.open(url)
 
 for pagenum in range(1):
     html = response.read()
-    CompTicker = re.search(r'MainContent_CompanyTicker*span', html)
-    print re.search(r'\w{3}\.AX', CompTicker).group(0)
+    print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker*span', html)).group(0)
