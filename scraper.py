@@ -17,4 +17,4 @@ response = br.open(url)
 
 for pagenum in range(1):
     html = response.read()
-    print re.findall("[...].AX", html)
+    print re.findall("[...]\.AX", html)
