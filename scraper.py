@@ -17,5 +17,4 @@ response = br.open(url)
 
 for pagenum in range(10):
     html = response.read()
-    print "Page %d  page length %d" % (pagenum, len(html))
-    print "Clinicians found:", re.findall("PDetails.aspx\?ProviderId.*?>(.*?)</a>", html)
+    print "html
