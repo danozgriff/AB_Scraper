@@ -1,24 +1,21 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
+import scraperwiki
+import mechanize
+import re
 
-# import scraperwiki
-# import lxml.html
-#
-# # Read in a page
-# html = scraperwiki.scrape("http://foo.com")
-#
-# # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
-#
-# # Write out to the sqlite database using scraperwiki library
-# scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
-#
-# # An arbitrary query against the database
-# scraperwiki.sql.select("* from data where 'name'='peter'")
+# ASPX pages are some of the hardest challenges because they use javascript and forms to navigate
+# Almost always the links go through the function function __doPostBack(eventTarget, eventArgument)
+# which you have to simulate in the mechanize form handling library
 
-# You don't have to do things with the ScraperWiki and lxml libraries.
-# You can use whatever libraries you want: https://morph.io/documentation/python
-# All that matters is that your final data is written to an SQLite database
-# called "data.sqlite" in the current working directory which has at least a table
-# called "data".
+# This example shows how to follow the Next page link
+
+url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=3PL.AX'
+br = mechanize.Browser()
+
+    # sometimes the server is sensitive to this information
+br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
+response = br.open(url)
+
+for pagenum in range(10):
+    html = response.read()
+    print "Page %d  page length %d" % (pagenum, len(html))
+    print "Clinicians found:", re.findall("PDetails.aspx\?ProviderId.*?>(.*?)</a>", html)
