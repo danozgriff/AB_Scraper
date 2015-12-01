@@ -16,4 +16,5 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 response = br.open(url)
 
     html = response.read()
-    print re.findall('[...].AX', html)
+    CompanyTicker = re.findall([...].AX, html)
+    print CompanyTicker
