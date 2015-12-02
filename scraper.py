@@ -8,16 +8,17 @@ import re
 
 # This example shows how to follow the Next page link
 
-url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=3PL.AX'
+url = www.google.com
+url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=3PL.AX'
 br = mechanize.Browser()
 
     # sometimes the server is sensitive to this information
 br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
-response = br.open(url)
+response = br.open(url2)
 
 for pagenum in range(1):
    html = response.read()
     
-   test1 = re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)
+  # test1 = re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)
    
-   print re.search(r'\w{3}\.AX', test1).group(0)
+   print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
