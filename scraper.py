@@ -20,4 +20,4 @@ for pagenum in range(1):
     
    print re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)
    
-   # print re.search(r'\w{3}\.AX', html).group(0)
+   ## print re.search(r'\w{3}\.AX', html).group(0)
