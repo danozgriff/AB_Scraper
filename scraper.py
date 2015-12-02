@@ -26,7 +26,6 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 # test2 = re.findall(r'(\"\>|img\/)((.)+)\<\/td\>\<td', test1)
 test2 = re.findall(r'(\"\>)((.)+)\<\/td\>\<td', test1)
 print test2[0]
-   
-   </td><td
+
    
   # print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
