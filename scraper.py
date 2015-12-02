@@ -23,7 +23,10 @@ for pagenum in range(1):
   
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
 test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html).group(0) 
-test2 = re.findall(r'(\"\>|img\/)((.)+)\<\/td\>\<td', test1)
+# test2 = re.findall(r'(\"\>|img\/)((.)+)\<\/td\>\<td', test1)
+test2 = re.findall(r'(\"\>)((.)+)\<\/td\>\<td', test1)
 print test2[0]
+   
+   </td><td
    
   # print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
