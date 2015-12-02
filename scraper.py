@@ -16,8 +16,8 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 response = br.open(url)
 
 for pagenum in range(1):
-    html = response.read()
+   html = response.read()
     
-   print re.findall(r'MainContent_CompanyTicker[a-z0-9A-Z\B]+span', html)
+   print re.search(r'MainContent_CompanyTicker[a-z0-9A-Z\B]+span', html).group(0)
    
    # print re.search(r'\w{3}\.AX', html).group(0)
