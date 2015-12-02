@@ -8,7 +8,7 @@ import re
 
 # This example shows how to follow the Next page link
 
-url = www.google.com
+url = 'www.google.com'
 url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=3PL.AX'
 br = mechanize.Browser()
 
