@@ -29,7 +29,7 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 #test2 re.search(r'\"\>(.*)\<\/?', test1)
 #test2 = re.findall('\">(.*?)<\/', test1) GOOD
 #test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1) BETTER
-test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace(" ", ""))
+test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\s", ""))
 print test2
 
    
