@@ -39,13 +39,13 @@ test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 #test4 = [x.replace(" ", "") for x in test3]
 
 #print re.search(r"\',\'(.*)\',\'", str(test3[0]).replace(" ", "")).group(0)
-print len(test3)
-print comp
-print re.search("(\w|\d)(.*)(\w|\d)", str(test3[0]).replace(" ", "")).group(0)
-re.search("(\w|\d)(.*)(\w|\d)", str(test3[1]).replace(" ", "")).group(0)
-re.search("(\w|\d)(.*)(\w|\d)", str(test3[2]).replace(" ", "")).group(0)
-(re.search("[Unc|C]heck", str(test3[3]).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
-re.search("(\w|\d)(.*)(\w|\d)", str(test3[4]).replace(" ", "")).group(0)
+while len(test3) >= 5:
+    print comp
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    print (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
 
 
    
