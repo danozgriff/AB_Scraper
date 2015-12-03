@@ -28,7 +28,7 @@ test2 = re.findall('\">(.*)<\/', test1)
 test2 = re.findall('\">(.*?)<\/', test1)
 #test2 re.search(r'\"\>(.*)\<\/?', test1)
 #test2 = re.findall('\">(.*?)<\/', test1) BEST
-test2 = re.findall('((\">)|(img/\))(.*?)((<\/)|(alt\=))', test1)
+test2 = re.findall('(\">|(img/\)(.*?)(<\/|alt\=)', test1)
 print test2
 
    
