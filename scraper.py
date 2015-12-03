@@ -24,7 +24,7 @@ for pagenum in range(1):
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
 test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html).group(0) 
 # test2 = re.findall(r'(\"\>|img\/)((.)+)\<\/td\>\<td', test1)
-test2 = re.findall('\">(.*)(<\/td><td)', test1)
+test2 = re.findall('\">(.*)(< \/td><td)', test1)
 #test2 re.search(r'\"\>(.*)\<\/?', test1)
 print test2
 
