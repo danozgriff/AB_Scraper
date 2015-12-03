@@ -37,11 +37,11 @@ test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 #print "".join(test3[0].split)
 #test4 = [x.replace(" ", "") for x in test3]
 
-print str(test3[0]).replace(" ", "")
-print str(test3[1]).replace(" ", "")
-print str(test3[2]).replace(" ", "")
-print str(test3[3]).replace(" ", "")
-print str(test3[4]).replace(" ", "")
+print re.search('\',\'(.*?)\',\'', str(test3[0]).replace(" ", ""))
+#print str(test3[1]).replace(" ", "")
+#print str(test3[2]).replace(" ", "")
+#print str(test3[3]).replace(" ", "")
+#print str(test3[4]).replace(" ", "")
 
 
    
