@@ -30,7 +30,7 @@ test2 = re.findall('\">(.*?)<\/', test1)
 #test2 = re.findall('\">(.*?)<\/', test1) GOOD
 #test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1) BETTER
 test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1)
-print test2
+print test2.replace(" ", "")
 
    
   # print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
