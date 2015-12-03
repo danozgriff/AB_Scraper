@@ -34,8 +34,8 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 
 #test3 = re.findall('\', \'(.*?)\', \'', test2)
 test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
-print "".join(test3[0].split)
-test4 = [test3.replace(" ", "") for x in test3]
+#print "".join(test3[0].split)
+test4 = [x.replace(" ", "") for x in test3]
 #print test3[2]
 #print test3[3]
 #print test3[4]
