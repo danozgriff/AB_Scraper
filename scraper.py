@@ -29,7 +29,7 @@ test2 = re.findall('\">(.*?)<\/', test1)
 #test2 re.search(r'\"\>(.*)\<\/?', test1)
 #test2 = re.findall('\">(.*?)<\/', test1) GOOD
 #test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1) BETTER
-test2 = re.findall('\">|img\/(.*?)<\/|\.gif', test1)
+test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1)
 print test2
 
    
