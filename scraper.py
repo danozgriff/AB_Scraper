@@ -19,7 +19,7 @@ response = br.open(url2)
 for pagenum in range(1):
    html = response.read()
     
-comp = re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)
+comp = re.search(r'MainContent_CompanyTicker(\w{3,}\.AX)span', html).group(0)
   
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
 test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html).group(0) 
