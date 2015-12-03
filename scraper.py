@@ -27,6 +27,7 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 test2 = re.findall('\">(.*)<\/', test1)
 test2 = re.findall('\">(.*?)<\/', test1)
 #test2 re.search(r'\"\>(.*)\<\/?', test1)
+test2 = re.findall('(\">|img\/)(.*?)<\/', test1)
 print test2
 
    
