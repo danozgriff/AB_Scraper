@@ -37,11 +37,11 @@ test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 #print "".join(test3[0].split)
 #test4 = [x.replace(" ", "") for x in test3]
 
-test4 = [[s.strip() for s in inner] for inner in test3]
+t4 = lambda: [num.replace(' ', '') for num in test3]
 #print test3[2]
 #print test3[3]
 #print test3[4]
 #print test3[5]
-print test4
+print t4
    
   # print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
