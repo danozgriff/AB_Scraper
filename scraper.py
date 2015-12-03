@@ -19,7 +19,8 @@ response = br.open(url2)
 for pagenum in range(1):
    html = response.read()
     
-comp = re.search(r'MainContent_CompanyTicker(\w{3,}\.AX)span', html).group(0)
+#comp = re.search(r'MainContent_CompanyTicker(\w{3,}\.AX)span', html).group(0)
+comp = '3PL.AX'
   
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
 test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html).group(0) 
@@ -41,10 +42,10 @@ test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 print len(test3)
 print comp
 print re.search("(\w|\d)(.*)(\w|\d)", str(test3[0]).replace(" ", "")).group(0)
-print re.search("(\w|\d)(.*)(\w|\d)", str(test3[1]).replace(" ", "")).group(0)
-print re.search("(\w|\d)(.*)(\w|\d)", str(test3[2]).replace(" ", "")).group(0)
-print (re.search("[Unc|C]heck", str(test3[3]).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
-print re.search("(\w|\d)(.*)(\w|\d)", str(test3[4]).replace(" ", "")).group(0)
+re.search("(\w|\d)(.*)(\w|\d)", str(test3[1]).replace(" ", "")).group(0)
+re.search("(\w|\d)(.*)(\w|\d)", str(test3[2]).replace(" ", "")).group(0)
+(re.search("[Unc|C]heck", str(test3[3]).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
+re.search("(\w|\d)(.*)(\w|\d)", str(test3[4]).replace(" ", "")).group(0)
 
 
    
