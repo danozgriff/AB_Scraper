@@ -24,13 +24,13 @@ for pagenum in range(1):
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
 test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html).group(0) 
 # test2 = re.findall(r'(\"\>|img\/)((.)+)\<\/td\>\<td', test1)
-test2 = re.findall('\">(.*)<\/', test1)
-test2 = re.findall('\">(.*?)<\/', test1)
+#test2 = re.findall('\">(.*)<\/', test1)
+#test2 = re.findall('\">(.*?)<\/', test1)
 #test2 re.search(r'\"\>(.*)\<\/?', test1)
 #test2 = re.findall('\">(.*?)<\/', test1) GOOD
 #test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1) BETTER
-test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1)
-print test2.replace(" ", "")
+test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace(" ", ""))
+print test2
 
    
   # print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
