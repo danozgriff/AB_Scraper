@@ -30,7 +30,8 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 #test2 = re.findall('\">(.*?)<\/', test1) GOOD
 #test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1) BETTER
 test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
-print test2
+test3 = re.findall('\', \'(.*?)\', \'', test2)
+print test3
 
    
   # print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
