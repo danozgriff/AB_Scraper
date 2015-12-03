@@ -33,7 +33,7 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 #test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 
 #test3 = re.findall('\', \'(.*?)\', \'', test2)
-test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", "")):
+test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
     print test3[0]
     print test3[2]
     print test3[3]
