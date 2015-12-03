@@ -34,10 +34,10 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 
 #test3 = re.findall('\', \'(.*?)\', \'', test2)
 test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
-print test3[0].replace(" ","")
-print test3[2].replace(" ","")
-print test3[3].replace(" ","")
-print test3[4].replace(" ","")
-print test3[5].replace(" ","")
+print "".join(test3[0].split)
+#print test3[2]
+#print test3[3]
+#print test3[4]
+#print test3[5]
    
   # print re.search(r'\w{3}\.AX', re.search(r'MainContent_CompanyTicker((.)+)span', html).group(0)).group(0)
