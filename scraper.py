@@ -41,7 +41,7 @@ test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 print re.search("(\w|\d)(.*)(\w|\d)", str(test3[0]).replace(" ", "")).group(0)
 print re.search("(\w|\d)(.*)(\w|\d)", str(test3[1]).replace(" ", "")).group(0)
 print re.search("(\w|\d)(.*)(\w|\d)", str(test3[2]).replace(" ", "")).group(0)
-print re.search("(\w|\d)(.*)(\w|\d)", str(test3[3]).replace(" ", "")).group(0)
+print re.search("[Unc|C]heck", str(test3[3]).replace(" ", "")).group(0)
 print re.search("(\w|\d)(.*)(\w|\d)", str(test3[4]).replace(" ", "")).group(0)
 
 
