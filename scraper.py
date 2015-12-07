@@ -16,7 +16,7 @@ br = mechanize.Browser()
     # sometimes the server is sensitive to this information
 br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
-reader = csv.DictReader(data.splitlines()[3:10])
+reader = csv.DictReader(data.splitlines()[2:10])
 
 for record in reader:
         print record
