@@ -16,10 +16,16 @@ br = mechanize.Browser()
     # sometimes the server is sensitive to this information
 br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
-reader = csv.DictReader(data.splitlines()[2:10])
+#####reader = csv.DictReader(data.splitlines()[2:10])
 
-for record in reader:
-        print record
+scraperwiki.sqlite.execute("create table companies (industry string, code string, company string)")           
+
+scraperwiki.sqlite.save(unique_keys=["code"], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name="companies")
+
+scraperwiki.sqlite.execute("select * from companies") 
+
+#####for record in reader:
+#####        print record
 
 ###response = br.open(url2)
 
