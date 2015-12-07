@@ -18,8 +18,8 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 reader = csv.reader(data.splitlines())
 
-for row in reader:           
-    print row[1]
+for record in reader:
+   print record
 
 ###response = br.open(url2)
 
