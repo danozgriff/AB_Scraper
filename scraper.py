@@ -18,6 +18,13 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 reader = csv.reader(data.splitlines())
 
+print reader[1]
+print reader[2]
+print reader[3]
+print reader[4]
+print reader[5]
+print reader[6]
+
 for record in reader:
     if record >= 3 and record <15:
         print record
