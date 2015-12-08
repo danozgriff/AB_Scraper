@@ -25,6 +25,7 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 #scraperwiki.sqlite.execute("drop table if exists company")  
 #scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
+scraperwiki.sqlite.execute("create table Signal_History (`ASX code` varchar2(8), `Date` date, `Price` integer, `Signal` varchar2(15), `Confirmation` char(1), `AUD 100` integer)")
 
 #scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('2015-12-07'), 'Y')")
 #scraperwiki.sqlite.execute("delete from company where `ASX code` = 'test'")
@@ -54,7 +55,7 @@ for pagenum in range(1):
    html = response.read()
     
 #comp = re.search(r'MainContent_CompanyTicker(\w{3,}\.AX)span', html).group(0)
-comp = '3PL.AX'
+ASX_Code = '3PL.AX'
   
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
 test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html)
@@ -77,16 +78,23 @@ if test1:
 #print "".join(test3[0].split)
 #test4 = [x.replace(" ", "") for x in test3]
 
+
+
 #print re.search(r"\',\'(.*)\',\'", str(test3[0]).replace(" ", "")).group(0)
 #print len(test3)
 #print ""
+
     while len(test3) >= 5:
-        print comp
-        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-        print (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).lower().replace("uncheck","N")).replace("check", "Y")
-        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    
+        #print ASX_Code
+        sh_Date = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        sh_Price = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        sh_Signal = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        sh_Confirmation = (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).lower().replace("uncheck","N")).replace("check", "Y")
+        sh_AUD100 re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        
+        scraperwiki.sqlite.execute("insert or replace into Signal_History values (:`ASX code`, :Date, :Price, :Signal, :Confirmation, :`AUD 100`)",  {"ASX code":ASX_Code, "Date":sh_Date, "Price":sh_Price, "Signal":sh_Signal, "Confirmation":sh_Confirmation, "AUD 100":sh_AUD100})
+        
 
 
    
