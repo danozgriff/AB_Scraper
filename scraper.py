@@ -10,7 +10,7 @@ import csv
 # This example shows how to follow the Next page link
 
 data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
-url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=TOT.AX'
+url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=WOW.AX'
 br = mechanize.Browser()
 
     # sometimes the server is sensitive to this information
