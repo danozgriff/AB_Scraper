@@ -27,12 +27,12 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 #scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
 
 #scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('2015-12-07'), 'Y')")
-scraperwiki.sqlite.execute("delete from company where `ASX code` = 'test'")
+#scraperwiki.sqlite.execute("delete from company where `ASX code` = 'test'")
 
 
 scraperwiki.sqlite.commit()
 
-scraperwiki.sqlite.save(['GICS industry group', 'ASX code', 'Company name'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name='company')
+scraperwiki.sqlite.save(['GICS industry group', 'ASX code', 'Company name'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:])), table_name='company')
 #scraperwiki.sqlite.save(['industry', 'code', 'company'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name="companies")
 
 scraperwiki.sqlite.execute("update company set `Last Refreshed` = date('now') where `Last Refreshed` is null")
@@ -43,7 +43,7 @@ scraperwiki.sqlite.execute("update company set `Top 500` = 'N' where `Last Refre
 
 scraperwiki.sqlite.commit()
 #scraperwiki.sqlite.execute(".schema companies")
-scraperwiki.sqlite.execute("select * from company") 
+#scraperwiki.sqlite.execute("select * from company") 
 
 #####for record in reader:
 #####        print record
