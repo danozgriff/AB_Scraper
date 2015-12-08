@@ -10,7 +10,7 @@ import csv
 # This example shows how to follow the Next page link
 
 data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
-url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=TOT.AX'
+url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=WOW.AX'
 br = mechanize.Browser()
 
     # sometimes the server is sensitive to this information
@@ -73,15 +73,15 @@ test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 #test4 = [x.replace(" ", "") for x in test3]
 
 #print re.search(r"\',\'(.*)\',\'", str(test3[0]).replace(" ", "")).group(0)
-print len(test3)
-print ""
-#while len(test3) >= 5:
-#    print comp
-#    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-#    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-#    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-#    print (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
-#    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+#print len(test3)
+#print ""
+while len(test3) >= 5:
+    print comp
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    print (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
+    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
 
 
    
