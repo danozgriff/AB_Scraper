@@ -57,7 +57,12 @@ for pagenum in range(1):
 comp = '3PL.AX'
   
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
-test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html).group(0) 
+test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html)
+
+if test 1:
+    test1 = test1.group(0)
+    
+
 # test2 = re.findall(r'(\"\>|img\/)((.)+)\<\/td\>\<td', test1)
 #test2 = re.findall('\">(.*)<\/', test1)
 #test2 = re.findall('\">(.*?)<\/', test1)
@@ -68,20 +73,20 @@ test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.
 #test2 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 
 #test3 = re.findall('\', \'(.*?)\', \'', test2)
-test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
+    test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 #print "".join(test3[0].split)
 #test4 = [x.replace(" ", "") for x in test3]
 
 #print re.search(r"\',\'(.*)\',\'", str(test3[0]).replace(" ", "")).group(0)
 #print len(test3)
 #print ""
-while len(test3) >= 5:
-    print comp
-    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-    print (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
-    print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+    while len(test3) >= 5:
+        print comp
+        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        print (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).replace("Uncheck","N")).replace("Check", "Y")
+        print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
 
 
    
