@@ -23,10 +23,10 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 #scraperwiki.sqlite.execute("alter table company rename column `Date Added` to `Last Refreshed`")
 #scraperwiki.sqlite.execute("alter table company add `Top 500` char(1)")
 
-scraperwiki.sqlite.execute("drop table if exists company")  
-scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
+#scraperwiki.sqlite.execute("drop table if exists company")  
+#scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
 
-#scraperwiki.sqlite.execute("insert into companies values ('test', 'test', 'test', date('now'))")
+scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('now')-1), 'Y'")
 #scraperwiki.sqlite.execute("delete * from company")
 
 
@@ -37,7 +37,9 @@ scraperwiki.sqlite.save(['GICS industry group', 'ASX code', 'Company name'], lis
 
 scraperwiki.sqlite.execute("update company set `Last Refreshed` = date('now') where `Last Refreshed` is null")
 scraperwiki.sqlite.commit()
+scraperwiki.sqlite.execute("update company set `Top 500` = 'Y' where `Last Refreshed` = date('now')")
 scraperwiki.sqlite.execute("update company set `Top 500` = 'N' where `Last Refreshed` <> date('now')")
+
 
 scraperwiki.sqlite.commit()
 #scraperwiki.sqlite.execute(".schema companies")
