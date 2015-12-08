@@ -25,6 +25,7 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 #scraperwiki.sqlite.execute("drop table if exists company")  
 #scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
+scraperwiki.sqlite.execute("drop table if exists Signal_History")  
 scraperwiki.sqlite.execute("create table Signal_History (`ASX code` varchar2(8), `Date` date, `Price` integer, `Signal` varchar2(15), `Confirmation` char(1), `AUD 100` integer)")
 
 #scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('2015-12-07'), 'Y')")
@@ -91,7 +92,7 @@ if test1:
         sh_Price = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
         sh_Signal = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
         sh_Confirmation = (re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).lower().replace("uncheck","N")).replace("check", "Y")
-        sh_AUD100 re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
+        sh_AUD100 = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
         
         scraperwiki.sqlite.execute("insert or replace into Signal_History values (:`ASX code`, :Date, :Price, :Signal, :Confirmation, :`AUD 100`)",  {"ASX code":ASX_Code, "Date":sh_Date, "Price":sh_Price, "Signal":sh_Signal, "Confirmation":sh_Confirmation, "AUD 100":sh_AUD100})
         
