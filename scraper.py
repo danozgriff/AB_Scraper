@@ -23,7 +23,7 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 #scraperwiki.sqlite.execute("drop table if exists companies")  
 #scraperwiki.sqlite.execute("create table companies (`GICS industry group` string, `ASX code` string, `Company name` string)")
 
-scraperwiki.sqlite.execute("insert into companies values ('test', 'test', 'test', date('now')")
+scraperwiki.sqlite.execute("insert into companies values ('test', 'test', 'test', date('now'))")
 
 scraperwiki.sqlite.commit()
 
