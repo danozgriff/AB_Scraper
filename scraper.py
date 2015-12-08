@@ -59,7 +59,7 @@ comp = '3PL.AX'
 #print re.findall(r'MainContent_signalpagehistory_PatternHistory24((.)+)\<\\table\>', html) 
 test1 = re.search(r'MainContent_signalpagehistory_PatternHistory24_DXDataRow0((.|\n)+)MainContent_signalpagehistory_PatternHistory24_IADD', html)
 
-if test 1:
+if test1:
     test1 = test1.group(0)
     
 
