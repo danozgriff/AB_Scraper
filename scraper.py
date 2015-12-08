@@ -23,11 +23,11 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 #scraperwiki.sqlite.execute("alter table company rename column `Date Added` to `Last Refreshed`")
 #scraperwiki.sqlite.execute("alter table company add `Top 500` char(1)")
 
-scraperwiki.sqlite.execute("drop table if exists company")  
-scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
+#scraperwiki.sqlite.execute("drop table if exists company")  
+#scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
 
-scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('2015-12-07'), 'Y')")
-#scraperwiki.sqlite.execute("delete * from company")
+#scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('2015-12-07'), 'Y')")
+scraperwiki.sqlite.execute("delete * from company where `ASX code` = 'test'")
 
 
 scraperwiki.sqlite.commit()
