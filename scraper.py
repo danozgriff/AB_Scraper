@@ -19,22 +19,29 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 #####reader = csv.DictReader(data.splitlines()[2:10])
 
 #scraperwiki.sqlite.execute("alter table companies add `Date Added` date")
+scraperwiki.sqlite.execute("alter table companies rename to company")
+scraperwiki.sqlite.execute("alter table companies rename column `Date Added` to `Last Refreshed`")
+scraperwiki.sqlite.execute("alter table companies add `Top 500` char(1)")
 
 #scraperwiki.sqlite.execute("drop table if exists companies")  
 #scraperwiki.sqlite.execute("create table companies (`GICS industry group` string, `ASX code` string, `Company name` string)")
 
-scraperwiki.sqlite.execute("insert into companies values ('test', 'test', 'test', date('now'))")
+#scraperwiki.sqlite.execute("insert into companies values ('test', 'test', 'test', date('now'))")
+scraperwiki.sqlite.execute("delete * from company")
+
 
 scraperwiki.sqlite.commit()
 
-scraperwiki.sqlite.save(['GICS industry group', 'ASX code', 'Company name'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name='companies')
+scraperwiki.sqlite.save(['GICS industry group', 'ASX code', 'Company name'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name='company')
 #scraperwiki.sqlite.save(['industry', 'code', 'company'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name="companies")
 
-#scraperwiki.sqlite.execute("update companies set `Date Added` = date('now') where `Date Added` is null")
+scraperwiki.sqlite.execute("update company set `Last Refreshed` = date('now') where `Last Refreshed` is null")
+scraperwiki.sqlite.commit()
+scraperwiki.sqlite.execute("update company set `Top 500` = 'N' where `Last Refreshed` <> date('now')")
 
 scraperwiki.sqlite.commit()
 #scraperwiki.sqlite.execute(".schema companies")
-scraperwiki.sqlite.execute("select * from companies") 
+scraperwiki.sqlite.execute("select * from company") 
 
 #####for record in reader:
 #####        print record
