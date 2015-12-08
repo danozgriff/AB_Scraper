@@ -22,11 +22,19 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 #scraperwiki.sqlite.execute("create table companies (industry string, code string, company string)")           
 
 ##scraperwiki.sqlite.save(['industry', 'code', 'company'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name="companies")
-scraperwiki.sqlite.save(['industry', 'code', 'company'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name="companies")
+#scraperwiki.sqlite.save(['industry', 'code', 'company'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name="companies")
+
+alist = list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:10])), table_name="companies")
+print alist[1]
+print alist[2]
+print alist[3]
+print alist[4]
+print alist[5]
+print alist[6]
 
 #scraperwiki.sqlite.commit()
 #scraperwiki.sqlite.execute(".schema companies")
-scraperwiki.sqlite.execute("select * from companies") 
+#scraperwiki.sqlite.execute("select * from companies") 
 
 #####for record in reader:
 #####        print record
