@@ -73,6 +73,8 @@ test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
 #test4 = [x.replace(" ", "") for x in test3]
 
 #print re.search(r"\',\'(.*)\',\'", str(test3[0]).replace(" ", "")).group(0)
+print len(test3)
+print ""
 while len(test3) >= 5:
     print comp
     print re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
