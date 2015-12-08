@@ -18,6 +18,8 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 #####reader = csv.DictReader(data.splitlines()[2:10])
 
+scraperwiki.sqlite.execute("alter table companies add `Date Added` date")
+
 #scraperwiki.sqlite.execute("drop table if exists companies")  
 #scraperwiki.sqlite.execute("create table companies (`GICS industry group` string, `ASX code` string, `Company name` string)")           
 
