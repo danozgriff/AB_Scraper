@@ -96,7 +96,7 @@ if test1:
         
         #scraperwiki.sqlite.execute("insert or replace into Signal_History values (:`ASX code`, :Date, :Price, :Signal, :Confirmation, :`AUD 100`)",  {"ASX code":ASX_Code, "Date":sh_Date, "Price":sh_Price, "Signal":sh_Signal, "Confirmation":sh_Confirmation, "AUD 100":sh_AUD100})
 
-scraperwiki.sqlite.execute("insert or replace into Signal_History values (?, ?, ?, ?, ?, ?)",  [ASX_Code, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_AUD100]) 
+scraperwiki.sqlite.execute("insert into Signal_History values (?, ?, ?, ?, ?, ?)",  [ASX_Code, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_AUD100]) 
 
 scraperwiki.sqlite.commit()    
 
