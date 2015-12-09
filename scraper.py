@@ -13,7 +13,7 @@ import csv
 
 #for x in asxlist:
 #    print asxlist(x)
-conn = sqlite3.connect('scraperwiki.sqlite')
+conn = sqlite.connect('scraperwiki.sqlite')
 
 with conn:
     
