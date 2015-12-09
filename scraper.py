@@ -22,8 +22,8 @@ with con:
     
     rows = cursor.fetchone()
     
-    if row == None:
-        break
+    #if row == None:
+    #    break
     
     print row[0]
 
