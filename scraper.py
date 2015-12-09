@@ -2,6 +2,7 @@ import scraperwiki
 import mechanize
 import re
 import csv
+import sqlite3
 
 # ASPX pages are some of the hardest challenges because they use javascript and forms to navigate
 # Almost always the links go through the function function __doPostBack(eventTarget, eventArgument)
@@ -13,7 +14,7 @@ import csv
 
 #for x in asxlist:
 #    print asxlist(x)
-conn = sqlite.connect('scraperwiki.sqlite')
+conn = sqlite3.connect('scraperwiki.sqlite')
 
 with conn:
     
