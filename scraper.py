@@ -9,7 +9,7 @@ import csv
 
 # This example shows how to follow the Next page link
 
-asxlist = list(scraperwiki.sqlite.select("`ASX code` from company limit 5"))
+asxlist = scraperwiki.sqlite.select("`ASX code` from company limit 5")
 
 for x,y in asxlist.iteritems():
     print y
