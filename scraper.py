@@ -11,7 +11,7 @@ import csv
 
 asxlist = scraperwiki.sqlite.select("`ASX code` from company limit 5")
 
-for x in asxlist
+for x in asxlist:
     print x
 
 data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
