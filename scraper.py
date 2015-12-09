@@ -12,10 +12,14 @@ url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
 # This example shows how to follow the Next page link
 
+scraperwiki.sqlite.execute("delete from Signal_History")
+scraperwiki.sqlite.commit()
+
 asxlist = scraperwiki.sqlite.execute("select `ASX code` from company limit 5")
 
 for x in asxlist["data"]:
     asxcode = str(x)[3:-2] + '.AX'
+    print asxcode
     #print str(asxlist["data"][x])[3:-2]
 
 #for x in asxlist:
