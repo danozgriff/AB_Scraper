@@ -9,6 +9,11 @@ import csv
 
 # This example shows how to follow the Next page link
 
+asxlist = scraperwiki.sqlite.select("`ASX code` from company limit 5")
+
+for x in asxlist:
+    print asxlist(x)
+
 data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
 url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=WOW.AX'
 br = mechanize.Browser()
@@ -25,8 +30,8 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 #scraperwiki.sqlite.execute("drop table if exists company")  
 #scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
-#scraperwiki.sqlite.execute("drop table if exists Signal_History")  
-#scraperwiki.sqlite.execute("create table Signal_History (`ASX code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD 100` real NOT NULL, UNIQUE (`ASX code`, `Date`))")
+scraperwiki.sqlite.execute("drop table if exists Signal_History")  
+scraperwiki.sqlite.execute("create table Signal_History (`ASX code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD 100` real NOT NULL, UNIQUE (`ASX code`, `Date`))")
 
 #scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('2015-12-07'), 'Y')")
 #scraperwiki.sqlite.execute("delete from company where `ASX code` = 'test'")
