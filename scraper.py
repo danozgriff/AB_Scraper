@@ -14,7 +14,7 @@ import csv
 #for x in asxlist:
 #    print asxlist(x)
 
-with con:
+with conn:
     
     conn = sqlite3.connect('scraperwiki.sqlite')
     cursor = conn.cursor()
