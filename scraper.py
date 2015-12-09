@@ -15,7 +15,7 @@ url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 scraperwiki.sqlite.execute("delete from Signal_History")
 scraperwiki.sqlite.commit()
 
-asxlist = scraperwiki.sqlite.execute("select `ASX code` from company limit 5")
+asxlist = scraperwiki.sqlite.execute("select `ASX code` from company")
 
 for x in asxlist["data"]:
     asxcode = str(x)[3:-2] + '.AX'
