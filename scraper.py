@@ -13,10 +13,11 @@ import csv
 
 #for x in asxlist:
 #    print asxlist(x)
+conn = sqlite3.connect('scraperwiki.sqlite')
 
 with conn:
     
-    conn = sqlite3.connect('scraperwiki.sqlite')
+
     cursor = conn.cursor()
     cursor.execute("select `ASX code` from company limit 5")
     
