@@ -9,10 +9,23 @@ import csv
 
 # This example shows how to follow the Next page link
 
-asxlist = scraperwiki.sqlite.execute("select `ASX code` from company limit 5")
+#asxlist = scraperwiki.sqlite.execute("select `ASX code` from company limit 5")
 
-for x in asxlist:
-    print asxlist(x)
+#for x in asxlist:
+#    print asxlist(x)
+
+with con:
+    
+    conn = sqlite3.connect('scraperwiki.sqlite')
+    cursor = conn.cursor()
+    cursor.execute("select `ASX code` from company limit 5")
+    
+    rows = cursor.fetchone()
+    
+    if row == None:
+        break
+    
+    print row[0]
 
 data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
 url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=WOW.AX'
