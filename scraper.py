@@ -12,9 +12,9 @@ import sqlite3
 
 asxlist = scraperwiki.sqlite.execute("select `ASX code` from company limit 5")
 
-#print asxlist["ASX code"][0]
-for x in asxlist:
-    print asxlist
+print asxlist["data"][0]
+#for x in asxlist:
+#    print asxlist
 
 data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
 url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=WOW.AX'
