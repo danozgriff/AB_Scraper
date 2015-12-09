@@ -25,8 +25,8 @@ br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.
 
 #scraperwiki.sqlite.execute("drop table if exists company")  
 #scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
-#scraperwiki.sqlite.execute("drop table if exists Signal_History")  
-#scraperwiki.sqlite.execute("create table Signal_History (`ASX code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD 100` real NOT NULL, PRIMARY KEY (`ASX code`, `Date`))")
+scraperwiki.sqlite.execute("drop table if exists Signal_History")  
+scraperwiki.sqlite.execute("create table Signal_History (`ASX code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD 100` real NOT NULL, UNIQUE (`ASX code`, `Date`))")
 
 #scraperwiki.sqlite.execute("insert into company values ('test', 'test', 'test', date('2015-12-07'), 'Y')")
 #scraperwiki.sqlite.execute("delete from company where `ASX code` = 'test'")
@@ -96,7 +96,7 @@ if test1:
         
         #scraperwiki.sqlite.execute("insert or replace into Signal_History values (:`ASX code`, :Date, :Price, :Signal, :Confirmation, :`AUD 100`)",  {"ASX code":ASX_Code, "Date":sh_Date, "Price":sh_Price, "Signal":sh_Signal, "Confirmation":sh_Confirmation, "AUD 100":sh_AUD100})
 
-        scraperwiki.sqlite.execute("insert into Signal_History values (?, ?, ?, ?, ?, ?)",  [ASX_Code, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_AUD100]) 
+        scraperwiki.sqlite.execute("insert or ignore into Signal_History values (?, ?, ?, ?, ?, ?)",  [ASX_Code, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_AUD100]) 
 
 scraperwiki.sqlite.commit()    
 
