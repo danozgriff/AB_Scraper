@@ -12,7 +12,8 @@ import sqlite3
 
 asxlist = scraperwiki.sqlite.execute("select `ASX code` from company limit 5")
 
-print asxlist["data"][0]
+var1 = asxlist["data"][0]
+print var1
 #for x in asxlist:
 #    print asxlist
 
