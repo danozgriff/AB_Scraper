@@ -66,7 +66,7 @@ quit()
 #scraperwiki.sqlite.execute("select * from company") 
 
 for record in reader:
-        print record
+    print record
 
     response = br.open(url + asxcode)
 
