@@ -15,11 +15,11 @@ url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 scraperwiki.sqlite.execute("delete from Signal_History")
 scraperwiki.sqlite.commit()
 
-asxlist = scraperwiki.sqlite.execute("select `ASX code` from company")
+#@@@asxlist = scraperwiki.sqlite.execute("select `ASX code` from company")
 
-for x in asxlist["data"]:
-    asxcode = str(x)[3:-2] + '.AX'
-    print asxcode
+#@@@for x in asxlist["data"]:
+#@@@    asxcode = str(x)[3:-2] + '.AX'
+#@@@    print asxcode
     #print str(asxlist["data"][x])[3:-2]
 
 #for x in asxlist:
@@ -27,10 +27,10 @@ for x in asxlist["data"]:
 
 #data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
 #url2 = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker=WOW.AX'
-    br = mechanize.Browser()
+#@@@    br = mechanize.Browser()
 
     # sometimes the server is sensitive to this information
-    br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
+#@@@    br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 
 #####reader = csv.DictReader(data.splitlines()[2:10])
 
@@ -65,8 +65,8 @@ quit()
 #scraperwiki.sqlite.execute(".schema companies")
 #scraperwiki.sqlite.execute("select * from company") 
 
-#####for record in reader:
-#####        print record
+for record in reader:
+        print record
 
     response = br.open(url + asxcode)
 
