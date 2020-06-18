@@ -1,5 +1,6 @@
 import scraperwiki
 import mechanize
+import cookielib
 #import re
 import csv
 #import time
@@ -12,10 +13,15 @@ url = 'https://www.marketindex.com.au/asx-listed-companies'
 #print page
 
 br = mechanize.Browser()
+cj = cookielib.LWPCookieJar()
+br.set_cookiejar(cj)
+br.set_handle_equiv(True)
+br.set_handle_redirect(True)
 br.set_handle_robots(False)
+br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
 
     # sometimes the server is sensitive to this information
-br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
+br.addheaders = [('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.72 Safari/537.36')]
 
 response = br.open(url)
 for pagenum in range(1):
