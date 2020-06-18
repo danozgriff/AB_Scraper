@@ -15,9 +15,9 @@ import csv
 #data = scraperwiki.scrape("http://www.asx.com.au/asx/research/ASXListedCompanies.csv")
 
 scraperwiki.sqlite.execute("drop table if exists company")  
-scraperwiki.sqlite.execute("create table company (`GICS industry group` string, `ASX code` string, `Company name` string, `Last Refreshed` date, `Top 500` char(1))")
+scraperwiki.sqlite.execute("create table company (`Code` string, `Company` string, `Market Cap` real, `Last Trade` real, `Change` real, `% Change` real, `Sector` string)")
   
-scraperwiki.sqlite.save(['GICS industry group', 'ASX code', 'Company name'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[2:])), table_name='company')
+scraperwiki.sqlite.save(['Code', 'Company', 'Market Cap', 'Last Trade', 'Change', '% Change', 'Sector'], list(csv.DictReader(scraperwiki.scrape('http://www.asx.com.au/asx/research/ASXListedCompanies.csv').splitlines()[0:])), table_name='company')
 #scraperwiki.sqlite.execute("update company set `Last Refreshed` = date('now') where `Last Refreshed` is null")
 #scraperwiki.sqlite.execute("update company set `Top 500` = 'Y' where `Last Refreshed` = date('now')")
 #scraperwiki.sqlite.execute("update company set `Top 500` = 'N' where `Last Refreshed` <> date('now')")
