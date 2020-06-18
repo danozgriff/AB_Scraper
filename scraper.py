@@ -17,9 +17,16 @@ import csv
 #scraperwiki.sqlite.execute("drop table if exists company")  
 #scraperwiki.sqlite.execute("create table company (`Code` string, `Company` string, `Market Cap` real, `Last Trade` real, `Change` real, `% Change` real, `Sector` string)")
   
-scraperwiki.sqlite.save(['Code', 'Company', 'Market Cap', 'Last Trade', 'Change', '% Change', 'Sector'], list(csv.DictReader(scraperwiki.scrape('https://www.listcorp.com/_api/services/discovery/download-companies-list?sortBy=market_capitalisation&descending=true&recentlyListedCompanies=false').splitlines()[1:])), table_name='company')
+#scraperwiki.sqlite.save(['Code', 'Company', 'Market Cap', 'Last Trade', 'Change', '% Change', 'Sector'], list(csv.DictReader(scraperwiki.scrape('https://www.listcorp.com/_api/services/discovery/download-companies-list?sortBy=market_capitalisation&descending=true&recentlyListedCompanies=false').splitlines()[1:])), table_name='company')
 #scraperwiki.sqlite.execute("update company set `Last Refreshed` = date('now') where `Last Refreshed` is null")
 #scraperwiki.sqlite.execute("update company set `Top 500` = 'Y' where `Last Refreshed` = date('now')")
 #scraperwiki.sqlite.execute("update company set `Top 500` = 'N' where `Last Refreshed` <> date('now')")
-scraperwiki.sqlite.commit()
+#scraperwiki.sqlite.commit()
 
+
+input_file = csv.DictReader(open("https://www.listcorp.com/_api/services/discovery/download-companies-list?sortBy=market_capitalisation&descending=true&recentlyListedCompanies=false"))
+#You may iterate over the rows of the csv file by iterating ove input_file. (Similarly to other files, you need to re-open the file if you want to iterate a second time.)
+
+for row in input_file:
+    print row
+    
