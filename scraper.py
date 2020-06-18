@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 website_url = requests.get('https://www.marketindex.com.au/asx-listed-companies').text
 
 soup = BeautifulSoup(website_url,'lxml')
+
+print soup
+
 table = soup.find("asx_sp_table")
 
 output_rows = []
