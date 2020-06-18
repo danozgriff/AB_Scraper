@@ -33,4 +33,4 @@ for table_row in table.findAll('tr'):
     output_rows.append(output_row)
     
     
-for p in output_rows: print p
+for p in output_rows: print p.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "")
