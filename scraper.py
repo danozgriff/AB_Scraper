@@ -17,11 +17,12 @@ br.addheaders = [('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/
 
 page = br.open(url)
 htmlcontent = page.read()
-soup = BeautifulSoup(htmlcontent)
+soup = BeautifulSoup(htmlcontent, features="lxml")
 
 ##print soup
 
-table = soup.find("asx_sp_table")
+#table = soup.find("asx_sp_table")
+table = soup.find( "table", {"id":"asx_sp_table"} )
 
 output_rows = []
 for table_row in table.findAll('tr'):
