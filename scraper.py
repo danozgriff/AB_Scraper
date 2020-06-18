@@ -1,22 +1,16 @@
-import scraperwiki
-import mechanize
-#import re
-import csv
-#import time
-#from datetime import datetime, date
-#import datetime
-#import requests
+from bs4 import BeautifulSoup
 
-url = 'https://www.listcorp.com/_api/services/discovery/download-companies-list?sortBy=market_capitalisation&descending=true&recentlyListedCompanies=false'
-#page = requests.get(URL)
-#print page
+html = open("https://www.marketindex.com.au/asx-listed-companies").read()
+soup = BeautifulSoup(html)
+table = soup.find("table")
 
-br = mechanize.Browser()
-
-    # sometimes the server is sensitive to this information
-br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
-
-response = br.open(url)
-for pagenum in range(1):
-    html = response.read()
-print html
+output_rows = []
+for table_row in table.findAll('tr'):
+    columns = table_row.findAll('td')
+    output_row = []
+    for column in columns:
+        output_row.append(column.text)
+    output_rows.append(output_row)
+    
+    
+for p in output_rows: print p
