@@ -8,4 +8,4 @@
 lxml==3.4.4
 cssselect==0.9.1
 mechanize==0.2.5
-beautifulsoap==4.9.0
+beautifulsoap4==4.9.0
