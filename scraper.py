@@ -24,7 +24,7 @@ import csv
 #scraperwiki.sqlite.commit()
 
 
-input_file = csv.DictReader(open("https://www.listcorp.com/_api/services/discovery/download-companies-list?sortBy=market_capitalisation&descending=true&recentlyListedCompanies=false"))
+input_file = csv.DictReader(open("https://www.listcorp.com/_api/services/discovery/download-companies-list"))
 #You may iterate over the rows of the csv file by iterating ove input_file. (Similarly to other files, you need to re-open the file if you want to iterate a second time.)
 
 for row in input_file:
