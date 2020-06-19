@@ -58,6 +58,6 @@ for table_row in table.findAll('tr'):
 
 for sublst in output_rows:
     #for item in sublst:
-    scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [sublst[0], sublst[2], sublst[3], sublst[4], sublst[5], sublst[6], sublst[8], sublst[7]) 
+    scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [sublst[0], sublst[2], sublst[3], sublst[4], sublst[5], sublst[6], sublst[8], sublst[7]]) 
         #print item,        # note the ending ','
     #print 
