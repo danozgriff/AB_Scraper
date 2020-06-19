@@ -36,6 +36,11 @@ for table_row in table.findAll('tr'):
 
 #output_rows = str(row).replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "").split(',')
 
-for p in output_rows: print str(p).split(',').replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "")
+#output_rows = 
 
-#for p in output_rows: print p[2]
+#for p in output_rows: print str(p).split(',')
+
+#.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "")
+
+for p in output_rows:
+print [val[-1] for val in str(p).split()]
