@@ -33,7 +33,7 @@ for table_row in table.findAll('tr'):
         output_row.append(column.text)
         if i < 100:
             print column.text
-            i++
+            i += 1
     output_rows.append(output_row)
     
 #output_rows = [item.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "") for item in output_rows]
