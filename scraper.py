@@ -40,6 +40,7 @@ for table_row in table.findAll('tr'):
         output_row.append(column.text + ",")
         if i < 100:
             print column.text
+            print "dane"
             i += 1
     output_rows.append(output_row)
     
