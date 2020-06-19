@@ -24,12 +24,16 @@ soup = BeautifulSoup(htmlcontent, features="lxml")
 #table = soup.find("asx_sp_table")
 table = soup.find( "table", {"id":"asx_sp_table"} )
 
+i=0
 output_rows = []
 for table_row in table.findAll('tr'):
     columns = table_row.findAll('td')
     output_row = []
     for column in columns:
         output_row.append(column.text)
+        if i < 100:
+            print column.text
+            i++
     output_rows.append(output_row)
     
 #output_rows = [item.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "") for item in output_rows]
@@ -42,5 +46,5 @@ for table_row in table.findAll('tr'):
 
 #.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "")
 
-for p in output_rows:
-    print [val for val in str(p).split()]
+#for p in output_rows:
+#    print [val for val in str(p).split()]
