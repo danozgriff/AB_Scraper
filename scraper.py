@@ -65,6 +65,6 @@ for sublst in output_rows:
         print item,        # note the ending ','
         i += 1
         print "count: " + str(i)
-    exit()
+    i=0
     print 
 #scraperwiki.sqlite.commit()  
