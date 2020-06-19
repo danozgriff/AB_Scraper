@@ -2,6 +2,7 @@ import scraperwiki
 import mechanize
 import cookielib
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 
 url = 'https://www.marketindex.com.au/asx-listed-companies'
@@ -26,8 +27,19 @@ htmlcontent = page.read()
 soup = BeautifulSoup(htmlcontent, features="lxml")
 
 
-myvar = soup.findAll("div", {"class": "header-timestamp"})[0].text
-print myvar[-11:]
+eoddate = soup.findAll("div", {"class": "header-timestamp"})[0].text[-11:]
+print eoddate
+
+date_obj = datetime.strptime(eoddate, '%d-%b-%Y')
+print date_obj.strftime('%d-%m-%Y')
+
+
+
+
+from datetime import datetime
+date_input = raw_input('Enter a date in dd-mon-yyyy format: ')
+date_obj = datetime.strptime(date_input, '%d-%b-%Y')
+print date_obj.strftime('%d-%m-%Y')
 
 table = soup.find( "table", {"id":"asx_sp_table"} )
 
