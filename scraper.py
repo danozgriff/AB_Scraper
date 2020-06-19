@@ -4,7 +4,7 @@ import cookielib
 from bs4 import BeautifulSoup
 
 
-url = 'https://www.marketindex.com.au/asx-listed-companies'
+url = 'https://www.marketindex.com.au/asx20'
 br = mechanize.Browser()
 cj = cookielib.LWPCookieJar()
 br.set_cookiejar(cj)
@@ -32,6 +32,7 @@ for table_row in table.findAll('tr'):
         output_row.append(column.text)
     output_rows.append(output_row)
     
-output_rows = [item.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "") for item in output_rows]
-    
-for p in output_rows: print p
+#output_rows = [item.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "") for item in output_rows]
+
+for r in range(len(output_rows)):    
+    print output_rows[r]
