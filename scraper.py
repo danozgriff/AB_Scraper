@@ -20,7 +20,7 @@ br.addheaders = [('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/
 
 scraperwiki.sqlite.execute("drop table if exists company")  
 scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer, `Date` string)")
-scraperwiki.sqlite.execute("delete from company")  
+#scraperwiki.sqlite.execute("delete from company")  
 
 
 page = br.open(url)
@@ -32,14 +32,7 @@ eoddate = soup.findAll("div", {"class": "header-timestamp"})[0].text[-11:].repla
 date_obj = datetime.strptime(eoddate, '%d-%b-%Y')
 eoddate = date_obj.strftime('%Y-%m-%d')
 
-
-from datetime import datetime
-date_input = raw_input('Enter a date in dd-mon-yyyy format: ')
-date_obj = datetime.strptime(date_input, '%d-%b-%Y')
-print date_obj.strftime('%d-%m-%Y')
-
 table = soup.find( "table", {"id":"asx_sp_table"} )
-
 
 output_rows = []
 for table_row in table.findAll('tr'):
