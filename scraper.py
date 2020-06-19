@@ -27,7 +27,7 @@ htmlcontent = page.read()
 soup = BeautifulSoup(htmlcontent, features="lxml")
 
 
-eoddate = soup.findAll("div", {"class": "header-timestamp"})[0].text[-11:]
+eoddate = soup.findAll("div", {"class": "header-timestamp"})[0].text[-11:].replace(" ", "-")
 print eoddate
 
 date_obj = datetime.strptime(eoddate, '%d-%b-%Y')
