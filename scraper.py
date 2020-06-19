@@ -31,6 +31,4 @@ eoddate = soup.findAll("div", {"class": "header-timestamp"})[0].text[-11:].repla
 print eoddate
 
 date_obj = datetime.strptime(eoddate, '%d-%b-%Y')
-print date_obj.strftime('%d-%m-%Y')
-
-
+print date_obj.strftime('%Y-%m-%d')
