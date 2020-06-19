@@ -1,6 +1,7 @@
 import scraperwiki
 import mechanize
 import cookielib
+import re
 from bs4 import BeautifulSoup
 from datetime import datetime
 
