@@ -15,6 +15,13 @@ br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
     # sometimes the server is sensitive to this information
 br.addheaders = [('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.72 Safari/537.36')]
 
+
+
+#scraperwiki.sqlite.execute("drop table if exists company")  
+#scraperwiki.sqlite.execute("create table company (`Rank` real, `Code` string, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` string)")
+
+
+
 page = br.open(url)
 htmlcontent = page.read()
 soup = BeautifulSoup(htmlcontent, features="lxml")
@@ -50,6 +57,7 @@ for table_row in table.findAll('tr'):
 #    print [val for val in str(p).split()]
 
 for sublst in output_rows:
-    for item in sublst:
-        print item,        # note the ending ','
-    print 
+    #for item in sublst:
+    scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [sublst[0], sublst[2], sublst[3], sublst[4], sublst[5], sublst[6], sublst[8], sublst[7]) 
+        #print item,        # note the ending ','
+    #print 
