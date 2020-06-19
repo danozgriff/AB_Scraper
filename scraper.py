@@ -31,16 +31,39 @@ soup = BeautifulSoup(htmlcontent, features="lxml")
 #table = soup.find("asx_sp_table")
 table = soup.find( "table", {"id":"asx_sp_table"} )
 
-i=0
+#i=0
 output_rows = []
 for table_row in table.findAll('tr'):
     columns = table_row.findAll('td')
     output_row = []
     for column in columns:
         output_row.append(column.text + ",")
-        if i < 100:
-            print column.text
-            print "dane"
-            i += 1
+        #if i < 100:
+            #print column.text
+            #i += 1
     output_rows.append(output_row)
     
+#output_rows = [item.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "") for item in output_rows]
+
+#output_rows = str(row).replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "").split(',')
+
+#output_rows = 
+
+#for p in output_rows: print str(p).split(',')
+
+#.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "")
+
+#for p in output_rows:
+#    print [val for val in str(p).split()]
+#outputlst = []
+for sublst in output_rows:
+    for item in sublst:
+        
+        
+        #outputlst.append(item,)
+   # scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [outputlst[0], outputlst[2], outputlst[3], outputlst[4], outputlst[5], outputlst[6], outputlst[8], outputlst[7]]) 
+    #outputlst.clear()
+        print item,        # note the ending ','
+        print "dane"
+    print 
+#scraperwiki.sqlite.commit()  
