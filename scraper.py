@@ -43,4 +43,4 @@ for table_row in table.findAll('tr'):
 #.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "")
 
 for p in output_rows:
-    print [val[-1] for val in str(p).split()]
+    print [val for val in str(p).split()]
