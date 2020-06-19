@@ -18,8 +18,9 @@ br.addheaders = [('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/
 
 
 
-#scraperwiki.sqlite.execute("drop table if exists company")  
-#scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer)")
+scraperwiki.sqlite.execute("drop table if exists company")  
+scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer, `Date` string)")
+scraperwiki.sqlite.execute("delete from company")  
 
 
 page = br.open(url)
@@ -28,7 +29,38 @@ soup = BeautifulSoup(htmlcontent, features="lxml")
 
 
 eoddate = soup.findAll("div", {"class": "header-timestamp"})[0].text[-11:].replace(" ", "-")
-print eoddate
-
 date_obj = datetime.strptime(eoddate, '%d-%b-%Y')
-print date_obj.strftime('%Y-%m-%d')
+eoddate = date_obj.strftime('%Y-%m-%d')
+
+
+from datetime import datetime
+date_input = raw_input('Enter a date in dd-mon-yyyy format: ')
+date_obj = datetime.strptime(date_input, '%d-%b-%Y')
+print date_obj.strftime('%d-%m-%Y')
+
+table = soup.find( "table", {"id":"asx_sp_table"} )
+
+
+output_rows = []
+for table_row in table.findAll('tr'):
+    columns = table_row.findAll('td')
+    output_row = []
+    for column in columns:
+        output_row.append(column.text + ",")
+    output_rows.append(output_row)
+    
+
+for sublst in output_rows:
+    if len(sublst) > 0:
+        rank = sublst[0].replace(",", "")
+        code = sublst[2].replace(",", "") 
+        company = sublst[3].replace(",", "") 
+        price = sublst[4].replace(",", "").replace("$", "") 
+        change = sublst[5].replace(",", "").replace("+", "")
+        perchg = round(float(sublst[6].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0, 4)                                                                                                   
+        yrperchg = round(float(sublst[8].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0, 4)                                                                                                 
+        marketcap = sublst[7].replace(",", "").replace("$", "").replace(".", "").replace(" B", "0000000").replace(" M", "0000").replace(" TH", "0")    
+        
+        scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?, ?)",  [rank, code, company, price, change, perchg, yrperchg, marketcap, eoddate]) 
+
+scraperwiki.sqlite.commit()  
