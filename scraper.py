@@ -18,7 +18,7 @@ br.addheaders = [('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/
 
 
 scraperwiki.sqlite.execute("drop table if exists company")  
-scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string, `Company` string, `Price` string, `Change` string, `% Change` string, `% Change 1 Year` string, `Market Cap` string)")
+scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` real)")
 
 
 
@@ -68,9 +68,9 @@ for sublst in output_rows:
         price = sublst[4].replace(",", "").replace("$", "") 
         change = sublst[5].replace(",", "").replace("+", "")
         #float(x.strip('"'))
-        perchg = float(sublst[6].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0                                                                                                   
-        yrperchg = float(sublst[8].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0                                                                                                 
-        marketcap = sublst[7].replace(",", "").replace(".", "").replace(" B", "0000000").replace(" M", "0000").replace(" TH", "0")    
+        perchg = round(float(sublst[6].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0, 4)                                                                                                   
+        yrperchg = round(float(sublst[8].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0, 4)                                                                                                 
+        marketcap = sublst[7].replace(",", "").replace("$", "").replace(".", "").replace(" B", "0000000").replace(" M", "0000").replace(" TH", "0")    
         
         scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [rank, code, company, price, change, perchg, yrperchg, marketcap]) 
 
