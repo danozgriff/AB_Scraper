@@ -27,7 +27,7 @@ soup = BeautifulSoup(htmlcontent, features="lxml")
 
 
 myvar = soup.findAll("div", {"class": "header-timestamp"})[0].text
-print myvar
+print myvar[-11:]
 
 table = soup.find( "table", {"id":"asx_sp_table"} )
 
