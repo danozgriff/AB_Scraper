@@ -55,7 +55,7 @@ for table_row in table.findAll('tr'):
 
 #for p in output_rows:
 #    print [val for val in str(p).split()]
-outputlst[]
+outputlst = []
 for sublst in output_rows:
     for item in sublst:
         outputlst.append(item,)
