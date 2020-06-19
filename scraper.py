@@ -59,6 +59,7 @@ outputlst = []
 for sublst in output_rows:
     for item in sublst:
         outputlst.append(item,)
+    print len(outputlst)
     scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [outputlst[0], outputlst[2], outputlst[3], outputlst[4], outputlst[5], outputlst[6], outputlst[8], outputlst[7]]) 
     outputlst.clear()
     #print item,        # note the ending ','
