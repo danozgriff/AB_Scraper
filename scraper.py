@@ -72,7 +72,7 @@ if 1==1:
     scraperwiki.sqlite.execute("create table Signal_History (`TIDM` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `GBP 100` real NOT NULL, UNIQUE (`TIDM`, `Date`))")
     
     
-    lselist = scraperwiki.sqlite.execute("select `Code` from company")
+    lselist = scraperwiki.sqlite.execute("select `Code` from company limit 10")
     
     for x in lselist["data"]:
         lsecode = str(x) + '.AX'
