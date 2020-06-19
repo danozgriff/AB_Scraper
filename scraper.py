@@ -17,8 +17,8 @@ br.addheaders = [('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/
 
 
 
-#scraperwiki.sqlite.execute("drop table if exists company")  
-#scraperwiki.sqlite.execute("create table company (`Rank` real, `Code` string, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` string)")
+scraperwiki.sqlite.execute("drop table if exists company")  
+scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string, `Company` string, `Price` string, `Change` string, `% Change` string, `% Change 1 Year` string, `Market Cap` string)")
 
 
 
@@ -56,15 +56,18 @@ for table_row in table.findAll('tr'):
 #for p in output_rows:
 #    print [val for val in str(p).split()]
 #outputlst = []
-i=0
+#i=0
 for sublst in output_rows:
-    for item in sublst:
-        #outputlst.append(item,)
-   # scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [outputlst[0], outputlst[2], outputlst[3], outputlst[4], outputlst[5], outputlst[6], outputlst[8], outputlst[7]]) 
+    if len(sublst) > 0:
+      #  for item in sublst:
+     #       outputlst.append(item,)
+        scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [sublst[0], sublst[2], sublst[3], sublst[4], sublst[5], sublst[6], sublst[8], sublst[7]]) 
+
+   # 
     #outputlst.clear()
-        print item,        # note the ending ','
-        i += 1
-        print "count: " + str(i)
-    i=0
-    print 
-#scraperwiki.sqlite.commit()  
+        #print item,        # note the ending ','
+        #i += 1
+        #print "count: " + str(i)
+    #i=0
+#    print 
+scraperwiki.sqlite.commit()  
