@@ -55,10 +55,12 @@ for table_row in table.findAll('tr'):
 
 #for p in output_rows:
 #    print [val for val in str(p).split()]
-
+outputlst[]
 for sublst in output_rows:
-    #for item in sublst:
-    print len(sublst)
-    scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [sublst[0], sublst[2], sublst[3], sublst[4], sublst[5], sublst[6], sublst[8], sublst[7]]) 
-        #print item,        # note the ending ','
+    for item in sublst:
+        outputlst.append(item,)
+    scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [outputlst[0], outputlst[2], outputlst[3], outputlst[4], outputlst[5], outputlst[6], outputlst[8], outputlst[7]]) 
+    outputlst.clear()
+    #print item,        # note the ending ','
     #print 
+scraperwiki.sqlite.commit()  
