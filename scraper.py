@@ -34,7 +34,8 @@ for table_row in table.findAll('tr'):
     
 #output_rows = [item.replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "") for item in output_rows]
 
-for r in range(len(output_rows)):    
-    print output_rows[r]
+for r in range(len(output_rows)):   
+    for s in range(len(r)): 
+        print output_rows[s]
 
 #for p in output_rows: print p
