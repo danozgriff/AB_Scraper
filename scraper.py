@@ -38,4 +38,4 @@ for table_row in table.findAll('tr'):
 
 #for p in output_rows: print str(p).replace("u'", "").replace("'", "").replace("\n", "").replace("[", "").replace("]", "").split(',')
 
-for p in output_rows: print p[2]
+for p in output_rows: print p[0]
