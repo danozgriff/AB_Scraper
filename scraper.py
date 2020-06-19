@@ -61,7 +61,18 @@ for sublst in output_rows:
     if len(sublst) > 0:
       #  for item in sublst:
      #       outputlst.append(item,)
-        scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [sublst[0], sublst[2], sublst[3], sublst[4], sublst[5], sublst[6], sublst[8], sublst[7]]) 
+     
+        rank = sublst[0].replace(",", "")
+        code = sublst[2].replace(",", "") 
+        company = sublst[3].replace(",", "") 
+        price = sublst[4].replace(",", "").replace("$", "") 
+        change = sublst[5].replace(",", "").replace("+", "")
+        #float(x.strip('"'))
+        perchg = float(sublst[6].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0                                                                                                   
+        yrperchg = float(sublst[8].replace(",", "").replace("+", "").replace("%", "").strip('"'))/100.0                                                                                                 
+        marketcap = sublst[7].replace(",", "").replace(".", "").replace(" B", "0000000").replace(" M", "0000").replace(" TH", "0")    
+        
+        scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?)",  [rank, code, company, price, change, perchg, yrperchg, marketcap]) 
 
    # 
     #outputlst.clear()
