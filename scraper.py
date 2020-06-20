@@ -76,7 +76,7 @@ if 1==1:
     lselist = scraperwiki.sqlite.execute("select `Code` from company limit 10")
     
     for x in lselist["data"]:
-        lsecode = str(x) + '.AX'
+        lsecode = str(x)[3:-2] + '.AX'
         #print lsecode
         #print str(asxlist["data"][x])[3:-2]
     
