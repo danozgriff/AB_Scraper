@@ -102,6 +102,8 @@ if 1==1:
     #####for record in reader:
     #####        print record
     
+        print url + lsecode
+    
         response = br.open(url + lsecode)
     
         for pagenum in range(1):
