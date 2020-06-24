@@ -72,14 +72,14 @@ if 1==1:
     #scraperwiki.sqlite.commit()
     
     scraperwiki.sqlite.execute("drop table if exists Signal_History")  
-    scraperwiki.sqlite.execute("create table Signal_History (`TIDM` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `GBP 100` real NOT NULL, UNIQUE (`TIDM`, `Date`))")
+    scraperwiki.sqlite.execute("create table Signal_History (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD100` real NOT NULL, UNIQUE (`Code`, `Date`))")
     
     
-    lselist = scraperwiki.sqlite.execute("select `Code` from company limit 10")
+    asxlist = scraperwiki.sqlite.execute("select `Code` from company limit 10")
     
-    for x in lselist["data"]:
-        lsecode = str(x)[3:-2] + '.AX'
-        #print lsecode
+    for x in asxlist["data"]:
+        asxcode = str(x)[3:-2] + '.AX'
+        #print asxcode
         #print str(asxlist["data"][x])[3:-2]
     
     #for x in asxlist:
@@ -104,9 +104,9 @@ if 1==1:
     #####for record in reader:
     #####        print record
     
-        print url + lsecode
+        print url + asxcode
     
-        response = br.open(url + lsecode)
+        response = br.open(url + asxcode)
     
         for pagenum in range(1):
             html = response.read()
@@ -130,9 +130,9 @@ if 1==1:
                     sh_Price = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "").replace(",", "")).group(0)
                     sh_Signal = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
                     sh_Confirmation = ((re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).lower()).replace("uncheck","N")).replace("check", "Y")
-                    sh_GBP100 = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "").replace(",", "")).group(0)
+                    sh_AUD100 = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "").replace(",", "")).group(0)
             
-                    scraperwiki.sqlite.execute("insert or ignore into Signal_History values (?, ?, ?, ?, ?, ?)",  [lsecode, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_GBP100]) 
+                    scraperwiki.sqlite.execute("insert or ignore into Signal_History values (?, ?, ?, ?, ?, ?)",  [asxcode, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_AUD100]) 
     
                     scraperwiki.sqlite.commit()    
     
