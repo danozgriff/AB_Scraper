@@ -129,7 +129,7 @@ if 1==1:
                     sh_Date = date(int(sh_Date[6:10]),int(sh_Date[3:5]),int(sh_Date[:2]))
                     sh_Price = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "").replace(",", "")).group(0)
                     sh_Signal = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
-                    sh_Confirmation = ((re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).lower()).replace("uncheck","N")).replace("check", "Y")
+                    sh_Confirmation = ((re.search("[Unc|C]heck", str(test3.pop(0)).replace(" ", "")).group(0).lower()))#.replace("uncheck","N")).replace("check", "Y")
                     sh_AUD100 = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "").replace(",", "")).group(0)
             
                     scraperwiki.sqlite.execute("insert or ignore into Signal_History values (?, ?, ?, ?, ?, ?)",  [asxcode, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_AUD100]) 
