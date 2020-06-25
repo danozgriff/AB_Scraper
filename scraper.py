@@ -118,6 +118,8 @@ if 1==1:
         
 
                 test3 = re.findall('(\">|img\/)(.*?)(<\/|\.gif)', test1.replace("\B", ""))
+                
+                print test3
 
     
                 while len(test3) >= 5:
