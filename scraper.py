@@ -94,11 +94,13 @@ if 1==1:
     asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and EOD_Date = ?", [eoddate])
     
     print len(asxlist)
-    quit()
+    #quit()
     
     for x in asxlist["data"]:
         asxcode = str(x)[3:-2] + '.AX'
-        #print asxcode
+        print asxcode
+        
+    quit()
         #print str(asxlist["data"][x])[3:-2]
     
     #for x in asxlist:
