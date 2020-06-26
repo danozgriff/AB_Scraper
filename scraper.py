@@ -17,11 +17,12 @@ eoddate = None
 
 #scraperwiki.sqlite.execute("drop table if exists RunHistory")  
 #scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, `Company_EOD_Date` string, UNIQUE (`Start_DateTime`))")
+if 1==0:
 
-scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?, ?)",  [dtstart, dtend, eoddate]) 
-scraperwiki.sqlite.commit() 
+    scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?, ?)",  [dtstart, dtend, eoddate]) 
+    scraperwiki.sqlite.commit() 
 
-if 1==1:
+if 1==0:
 
     url = 'https://www.marketindex.com.au/asx-listed-companies'
     br = mechanize.Browser()
@@ -91,6 +92,9 @@ if 1==1:
     
     
     asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and EOD_Date = ?", [eoddate])
+    
+    print len(asxlist)
+    quit()
     
     for x in asxlist["data"]:
         asxcode = str(x)[3:-2] + '.AX'
@@ -165,7 +169,7 @@ if 1==1:
 
 
 
-if 1==1:
+if 1==0:
 
     dtend = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
      
