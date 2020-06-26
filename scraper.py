@@ -15,8 +15,8 @@ dtstart = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
 dtend = None
 eoddate = None
 
-scraperwiki.sqlite.execute("drop table if exists RunHistory")  
-scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, `Company_EOD_Date` string, UNIQUE (`Start_DateTime`))")
+#scraperwiki.sqlite.execute("drop table if exists RunHistory")  
+#scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, `Company_EOD_Date` string, UNIQUE (`Start_DateTime`))")
 
 scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?, ?)",  [dtstart, dtend, eoddate]) 
 scraperwiki.sqlite.commit() 
@@ -78,7 +78,7 @@ if 1==1:
     scraperwiki.sqlite.commit()  
 
 
-if 1==0:
+if 1==1:
 
     url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
