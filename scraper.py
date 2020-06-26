@@ -19,13 +19,13 @@ if 1==1:
 
 
     #scraperwiki.sqlite.execute("drop table if exists Signal_History")  
-    #scraperwiki.sqlite.execute("create table RunHistory (`Date` date NOT NULL, `Price
+    #scraperwiki.sqlite.execute("create table RunHistory (`Datetime` date NOT NULL, `Price
     
-    print datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
+    #print datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
   
-  d = datetime.datetime.now(pytz.timezone("Australia/Perth"))
-  dtz_string = d.strftime(fmt)
-  print dtz_string
+    d = datetime.datetime.now(pytz.timezone("Australia/Perth"))
+    dtz_string = d.strftime(fmt)
+    print dtz_string
 
 
 if 1==0:
