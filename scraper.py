@@ -13,11 +13,12 @@ import pytz
 au_tz = pytz.timezone('Australia/Perth')
 dtstart = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
 dtend = None
+eoddate = None
 
 scraperwiki.sqlite.execute("drop table if exists RunHistory")  
-scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, UNIQUE (`Start_DateTime`))")
+scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, `Company_EOD_Date` string, UNIQUE (`Start_DateTime`))")
 
-scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart, dtend]) 
+scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?, ?)",  [dtstart, dtend, eoddate]) 
 scraperwiki.sqlite.commit() 
 
 if 1==1:
@@ -85,8 +86,8 @@ if 1==0:
     #scraperwiki.sqlite.execute("delete from Signal_History")
     #scraperwiki.sqlite.commit()
     
-    scraperwiki.sqlite.execute("drop table if exists Signal_History")  
-    scraperwiki.sqlite.execute("create table Signal_History (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD100` real NOT NULL, UNIQUE (`Code`, `Date`))")
+    #scraperwiki.sqlite.execute("drop table if exists Signal_History")  
+    #scraperwiki.sqlite.execute("create table Signal_History (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD100` real NOT NULL, UNIQUE (`Code`, `Date`))")
     
     
     asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and Date = ?", [eoddate])
@@ -168,6 +169,6 @@ if 1==1:
 
     dtend = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
      
-    scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart, dtend]) 
+    scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?, ?)",  [dtstart, dtend, eoddate])     
     scraperwiki.sqlite.commit() 
     
