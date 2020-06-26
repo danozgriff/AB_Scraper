@@ -11,7 +11,7 @@ import pytz
 
 
 au_tz = pytz.timezone('Australia/Perth')
-dtnow = datetime.now(tz=tz)
+dtnow = datetime.now(tz=au_tz)
 
 
 
