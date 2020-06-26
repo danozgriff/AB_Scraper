@@ -37,7 +37,7 @@ if 1==1:
 
 
     scraperwiki.sqlite.execute("drop table if exists company")  
-    scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string NOT NULL, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer, `EOD Date` string NOT NULL, UNIQUE (`Code`, `EOD Date`))")
+    scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string NOT NULL, `Company` string, `Price` real, `Change` real, `Perc_Change` real, `Perc_Change_1_Year` real, `Market_Cap` integer, `EOD_Date` string NOT NULL, UNIQUE (`Code`, `EOD_Date`))")
     #scraperwiki.sqlite.execute("delete from company")  
 
 
@@ -90,7 +90,7 @@ if 1==1:
     #scraperwiki.sqlite.execute("create table Signal_History (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD100` real NOT NULL, UNIQUE (`Code`, `Date`))")
     
     
-    asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and Date = ?", [eoddate])
+    asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and EOD_Date = ?", [eoddate])
     
     for x in asxlist["data"]:
         asxcode = str(x)[3:-2] + '.AX'
