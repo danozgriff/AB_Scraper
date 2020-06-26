@@ -36,7 +36,7 @@ if 1==1:
 
 
     scraperwiki.sqlite.execute("drop table if exists company")  
-    scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string NOT NULL, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer, `Date` string NOT NULL, UNIQUE (`Code`, `Date`))")
+    scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string NOT NULL, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer, `EOD Date` string NOT NULL, UNIQUE (`Code`, `EOD Date`))")
     #scraperwiki.sqlite.execute("delete from company")  
 
 
