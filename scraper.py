@@ -14,7 +14,8 @@ au_tz = pytz.timezone('Australia/Perth')
 dtstart = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
 dtend = None
 
-#scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` date NOT NULL, `End_DateTime`, UNIQUE (`Start_DateTime`))")
+scraperwiki.sqlite.execute("drop table if exists RunHistory")  
+scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, UNIQUE (`Start_DateTime`))")
 
 scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart, dtend]) 
 scraperwiki.sqlite.commit() 
@@ -35,7 +36,7 @@ if 1==1:
 
 
     scraperwiki.sqlite.execute("drop table if exists company")  
-    scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer, `Date` string)")
+    scraperwiki.sqlite.execute("create table company (`Rank` string, `Code` string NOT NULL, `Company` string, `Price` real, `Change` real, `% Change` real, `% Change 1 Year` real, `Market Cap` integer, `Date` string NOT NULL, UNIQUE (`Code`, `Date`))")
     #scraperwiki.sqlite.execute("delete from company")  
 
 
@@ -76,7 +77,7 @@ if 1==1:
     scraperwiki.sqlite.commit()  
 
 
-if 1==1:
+if 1==0:
 
     url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
@@ -120,7 +121,7 @@ if 1==1:
         
         
         # seed random number generator
-        seed(1)
+        #seed(1)
         pausetime = randint(0, 60)
             
         print asxcode + " (Pause: " + str(pausetime) + ")"
