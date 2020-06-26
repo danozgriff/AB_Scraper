@@ -10,6 +10,17 @@ from random import seed, randint
 #from random import randint
 
 
+
+if 1==1:
+
+
+    #scraperwiki.sqlite.execute("drop table if exists Signal_History")  
+    #scraperwiki.sqlite.execute("create table RunHistory (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price
+    
+    print datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+  
+
+
 if 1==0:
 
     url = 'https://www.marketindex.com.au/asx-listed-companies'
@@ -66,7 +77,7 @@ if 1==0:
     scraperwiki.sqlite.commit()  
 
 
-if 1==1:
+if 1==0:
 
     url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
@@ -110,7 +121,7 @@ if 1==1:
         
         
         # seed random number generator
-        #seed(1)
+        seed(1)
         pausetime = randint(0, 10)
             
         print asxcode + " (Pause: " + str(pausetime) + ")"
