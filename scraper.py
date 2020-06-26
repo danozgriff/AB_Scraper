@@ -16,7 +16,7 @@ dtend = None
 
 #scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` date NOT NULL, `End_DateTime`, UNIQUE (`Start_DateTime`))")
 
-scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart], [dtend]) 
+scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart, dtend) 
 scraperwiki.sqlite.commit() 
 
 if 1==1:
