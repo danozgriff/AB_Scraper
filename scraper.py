@@ -10,7 +10,7 @@ from random import seed, randint
 import pytz
 
 
-au_tz = pytz.timezone('Australia/Perth')
+#au_tz = pytz.timezone('Australia/Perth')
 #dtnow = datetime.now(tz=tz)
 
 
@@ -23,6 +23,9 @@ if 1==1:
     
     print datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
   
+  d = datetime.datetime.now(pytz.timezone("Australia/Perth"))
+  dtz_string = d.strftime(fmt)
+  print dtz_string
 
 
 if 1==0:
