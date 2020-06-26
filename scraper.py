@@ -12,10 +12,11 @@ import pytz
 
 au_tz = pytz.timezone('Australia/Perth')
 dtstart = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
+dtend = None
 
 #scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` date NOT NULL, `End_DateTime`, UNIQUE (`Start_DateTime`))")
 
-scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart], None) 
+scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart], [dtend]) 
 scraperwiki.sqlite.commit() 
 
 if 1==1:
