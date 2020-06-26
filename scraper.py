@@ -5,6 +5,7 @@ import re
 from bs4 import BeautifulSoup
 from datetime import datetime, date, time
 # generate random integer values
+import time    
 from random import seed, randint
 #from random import randint
 
