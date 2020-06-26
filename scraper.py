@@ -22,7 +22,7 @@ if 1==0:
     scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?, ?)",  [dtstart, dtend, eoddate]) 
     scraperwiki.sqlite.commit() 
 
-if 1==0:
+if 1==1:
 
     url = 'https://www.marketindex.com.au/asx-listed-companies'
     br = mechanize.Browser()
@@ -91,7 +91,7 @@ if 1==1:
     #scraperwiki.sqlite.execute("create table Signal_History (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD100` real NOT NULL, UNIQUE (`Code`, `Date`))")
     
     
-    asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and EOD_Date = '2020-06-26'") #?", [eoddate])
+    asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and EOD_Date = ?", [eoddate])
     
     #print len(asxlist)
     #quit()
