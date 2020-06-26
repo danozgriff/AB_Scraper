@@ -11,24 +11,14 @@ import pytz
 
 
 au_tz = pytz.timezone('Australia/Perth')
-dtnow = datetime.now(tz=au_tz)
+dtstart = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
 
+scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` date NOT NULL, `End_DateTime`, UNIQUE (`Start_DateTime`)")
 
+scraperwiki.sqlite.execute("insert or replace into RunHistory values (?)",  [dtstart]) 
+scraperwiki.sqlite.commit() 
 
 if 1==1:
-
-
-    #scraperwiki.sqlite.execute("drop table if exists Signal_History")  
-    #scraperwiki.sqlite.execute("create table RunHistory (`Datetime` date NOT NULL, `Price
-    
-    print dtnow.strftime("%Y-%m-%d %H:%M:%S")
-  
-    #d = datetime.now(pytz.timezone("Australia/Perth"))
-    #dtz_string = d.strftime(fmt)
-    #print d
-
-
-if 1==0:
 
     url = 'https://www.marketindex.com.au/asx-listed-companies'
     br = mechanize.Browser()
@@ -56,6 +46,7 @@ if 1==0:
     eoddate = soup.findAll("div", {"class": "header-timestamp"})[0].text[-11:].replace(" ", "-")
     date_obj = datetime.strptime(eoddate, '%d-%b-%Y')
     eoddate = date_obj.strftime('%Y-%m-%d')
+    eoddateint = int(date_obj.strftime('%Y%m%d'))
 
     table = soup.find( "table", {"id":"asx_sp_table"} )
 
@@ -84,7 +75,7 @@ if 1==0:
     scraperwiki.sqlite.commit()  
 
 
-if 1==0:
+if 1==1:
 
     url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
@@ -96,7 +87,7 @@ if 1==0:
     scraperwiki.sqlite.execute("create table Signal_History (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD100` real NOT NULL, UNIQUE (`Code`, `Date`))")
     
     
-    asxlist = scraperwiki.sqlite.execute("select `Code` from company limit 10")
+    asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and Date = ?", [eoddate])
     
     for x in asxlist["data"]:
         asxcode = str(x)[3:-2] + '.AX'
@@ -129,7 +120,7 @@ if 1==0:
         
         # seed random number generator
         seed(1)
-        pausetime = randint(0, 10)
+        pausetime = randint(0, 60)
             
         print asxcode + " (Pause: " + str(pausetime) + ")"
         time.sleep(pausetime)
@@ -165,4 +156,16 @@ if 1==0:
                     scraperwiki.sqlite.execute("insert or ignore into Signal_History values (?, ?, ?, ?, ?, ?)",  [asxcode, sh_Date, sh_Price, sh_Signal, sh_Confirmation, sh_AUD100]) 
     
                     scraperwiki.sqlite.commit()    
+    
+
+
+
+
+
+if 1==1:
+
+    dtend = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
+     
+    scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?)",  [dtstart, dtend]) 
+    scraperwiki.sqlite.commit() 
     
