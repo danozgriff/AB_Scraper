@@ -110,7 +110,7 @@ if 1==1:
         
         
         # seed random number generator
-        seed(1)
+        #seed(1)
         pausetime = randint(0, 10)
             
         print asxcode + " (Pause: " + str(pausetime) + ")"
