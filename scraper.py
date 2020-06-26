@@ -10,7 +10,7 @@ from random import seed, randint
 import pytz
 
 
-tz = pytz.timezone('Australia/Perth')
+au_tz = pytz.timezone('Australia/Perth')
 #dtnow = datetime.now(tz=tz)
 
 
@@ -21,7 +21,7 @@ if 1==1:
     #scraperwiki.sqlite.execute("drop table if exists Signal_History")  
     #scraperwiki.sqlite.execute("create table RunHistory (`Date` date NOT NULL, `Price
     
-    print datetime.now(tz=tz).strftime("%Y-%m-%d %H:%M:%S")
+    print datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
   
 
 
