@@ -79,7 +79,7 @@ if 1==1:
     scraperwiki.sqlite.commit()  
 
 
-if 1==1:
+if 1==0:
 
     url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
