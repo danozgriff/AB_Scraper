@@ -169,7 +169,7 @@ if 1==1:
  ###Second Run for getting todays asx stats###
  
 
- if 1==1:
+if 1==1:
  
     time.sleep(36000)
 
