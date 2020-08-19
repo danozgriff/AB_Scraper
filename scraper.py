@@ -148,7 +148,7 @@ if 1==1:
 
                 historycnt = 1
     
-                while len(test3) >= 5 and historycnt <= 3000:
+                while len(test3) >= 5 and historycnt <= 3:
         
                 #print ASX_Code
                     sh_Date = re.search("(\w|\d)(.*)(\w|\d)", str(test3.pop(0)).replace(" ", "")).group(0)
