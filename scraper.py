@@ -15,14 +15,15 @@ dtstart = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
 dtend = None
 eoddate = None
 
-#scraperwiki.sqlite.execute("drop table if exists RunHistory")  
-#scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, `Company_EOD_Date` string, UNIQUE (`Start_DateTime`))")
-if 1==1:
+scraperwiki.sqlite.execute("drop table if exists RunHistory")  
+scraperwiki.sqlite.execute("create table RunHistory (`Start_DateTime` string NOT NULL, `End_DateTime` string, `Company_EOD_Date` string, UNIQUE (`Start_DateTime`, `Company_EOD_Date`))")
+
+if 1==0:
 
     scraperwiki.sqlite.execute("insert or replace into RunHistory values (?, ?, ?)",  [dtstart, dtend, eoddate]) 
     scraperwiki.sqlite.commit() 
 
-if 1==1:
+if 1==0:
 
     url = 'https://www.marketindex.com.au/asx-listed-companies'
     br = mechanize.Browser()
@@ -79,7 +80,7 @@ if 1==1:
     scraperwiki.sqlite.commit()  
 
 
-if 1==1:
+if 1==0:
 
     url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
@@ -169,7 +170,7 @@ if 1==1:
  ###Second Run for getting todays asx stats###
  
 
-if 1==1:
+if 1==0:
  
     time.sleep(36000)
 
@@ -230,7 +231,7 @@ if 1==1:
 
 
 
-if 1==1:
+if 1==0:
 
     dtend = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
      
