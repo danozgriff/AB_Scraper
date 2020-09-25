@@ -77,10 +77,15 @@ if 1==1:
             
             scraperwiki.sqlite.execute("insert or ignore into company values (?, ?, ?, ?, ?, ?, ?, ?, ?)",  [rank, code, company, price, change, perchg, yrperchg, marketcap, eoddate]) 
 
+    
+    scraperwiki.sqlite.execute("create table Company_List (`Code` varchar2(8) NOT NULL, `Date_Added` date NOT NULL, UNIQUE (`Code`))")  
+    scraperwiki.sqlite.execute("insert or ignore into Company_List SELECT code, company, ? from company", [eoddate])
+
+
     scraperwiki.sqlite.commit()  
 
 
-if 1==1:
+if 1==0:
 
     url = 'https://www.aussiebulls.com/SignalPage.aspx?lang=en&Ticker='
 
@@ -90,9 +95,9 @@ if 1==1:
     
     #scraperwiki.sqlite.execute("drop table if exists Signal_History")  
     #scraperwiki.sqlite.execute("create table Signal_History (`Code` varchar2(8) NOT NULL, `Date` date NOT NULL, `Price` real NOT NULL, `Signal` varchar2(15) NOT NULL, `Confirmation` char(1) NOT NULL, `AUD100` real NOT NULL, UNIQUE (`Code`, `Date`))")
-    
-    
-    asxlist = scraperwiki.sqlite.execute("select distinct `Code` from company where Rank <= 300 and EOD_Date = ?", [eoddate])
+
+    asxlist = scraperwiki.sqlite.execute("select distinct `Code` from Company_List")
+
     
     for x in asxlist["data"]:
         asxcode = str(x)[3:-2] + '.AX'
@@ -167,7 +172,7 @@ if 1==1:
                     historycnt += 1
 
 
-if 1==1:
+if 1==0:
 
     dtend = datetime.now(tz=au_tz).strftime("%Y-%m-%d %H:%M:%S")
      
