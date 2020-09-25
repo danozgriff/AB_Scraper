@@ -80,7 +80,7 @@ if 1==1:
     
     scraperwiki.sqlite.execute("drop table if exists Company_List") 
     scraperwiki.sqlite.execute("create table Company_List (`Code` varchar2(8) NOT NULL, `Company` varchar2(100) NOT NULL, `Date_Added` date NOT NULL, UNIQUE (`Code`))")  
-    scraperwiki.sqlite.execute("insert or ignore into Company_List SELECT DISTINCT code, company, ? from company", [eoddate])
+    scraperwiki.sqlite.execute("insert or ignore into Company_List SELECT DISTINCT code, company, ? from company where rank >= 300", [eoddate])
 
 
     scraperwiki.sqlite.commit()  
